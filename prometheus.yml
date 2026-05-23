@@ -1,0 +1,26 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Payment application metrics - static configuration
+  - job_name: 'payment-app'
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['payment-app:8080']
+
+  # Prometheus demo application metrics
+  - job_name: 'prometheus-demo-app'
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['prometheus-demo-app:8080']
+        labels:
+          app: 'prometheus-demo-app'
+          environment: 'production'

@@ -1,0 +1,36 @@
+# Git files
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Kubernetes/OpenShift manifests
+*.yaml
+
+# Grafana dashboard
+grafana-dashboard.json
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go specific
+vendor/

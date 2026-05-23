@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: prometheus-demo-app
+  labels:
+    app: prometheus-demo-app
+spec:
+  to:
+    kind: Service
+    name: prometheus-demo-app
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

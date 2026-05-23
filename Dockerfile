@@ -4,11 +4,15 @@ FROM golang:1.21-alpine AS builder
 # Set the working directory
 WORKDIR /app
 
-# Copy go mod files
-COPY go.mod ./
+# Set Go environment variables for dependency resolution
+ENV GOPROXY=https://proxy.golang.org,direct
+ENV GO111MODULE=on
 
-# Download dependencies and generate go.sum
-RUN go mod download && go mod tidy
+# Copy go mod files
+COPY go.mod go.sum* ./
+
+# Download dependencies
+RUN go mod download
 
 # Copy source code
 COPY main.go ./
